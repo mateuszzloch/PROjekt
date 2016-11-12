@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Nerw.us - portal aukcyjny | Rejestracja</title>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<script src="js/jquery.min.js"></script>
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'><!--//fonts-->
+<link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="js/memenu.js"></script>
+<script>$(document).ready(function(){$(".memenu").memenu();});</script>
+</head>
+<body>
+<div class="header">
+	<div class="header-top">
+		<div class="container">
+
+			<div class="header-left">		
+					<ul>
+						<li ><a class="lock"  href="login.html"  >Logowanie</a></li>
+						<li><a class="lock" href="register.html"  >Rejestracja</a></li>
+						<li>
+</li>
+
+					</ul>
+					<div class="clearfix"> </div>
+			</div>
+				<div class="clearfix"> </div>
+		</div>
+		</div>
+		<div class="container">
+			<div class="head-top">
+				<div class="logo">
+					<a href="index.php"><img src="images/logo.png" alt=""></a>	
+				</div>
+<div class=" h_menu4">
+					<ul class="memenu skyblue">
+					  <li class="active grid"><a class="color8" href="index.php">Strona główna</a></li>	
+				      <li><a class="color1" href="#">Kategorie</a>
+				      	<div class="mepanel">
+						<div class="row">
+							<div class="col1">
+								<div class="h_nav">
+									<ul>
+										<li><a href="products.html">Akcesoria</a></li>
+										<li><a href="products.html">Zegarki</a></li>
+										<li><a href="products.html">Galanteria</a></li>
+										<li><a href="products.html">Swetry</a></li>
+										<li><a href="products.html">Kardigany s</a></li>
+										<li><a href="products.html">Jeansy</a></li>
+										<li><a href="products.html">Nakrycia głowy</a></li>
+										<li><a href="products.html">Kurtki i płaszcze</a></li>
+										<li><a href="products.html">Kurtki skórzane</a></li>
+										<li><a href="products.html">Bluzki</a></li>
+										<li><a href="products.html">T-shirty</a></li>
+									</ul>	
+								</div>							
+							</div>
+							<div class="col1">
+								<div class="h_nav">
+									<ul>
+										<li><a href="products.html">Koszule</a></li>
+										<li><a href="products.html">Buty</a></li>
+										<li><a href="products.html">Spodenki</a></li>
+										<li><a href="products.html">Garniyury</a></li>
+										<li><a href="products.html">Okulary</a></li>
+										<li><a href="products.html">Dresy</a></li>
+										<li><a href="products.html">Stroje kąpielowe</a></li>
+										<li><a href="products.html">Spodnie</a></li>
+										<li><a href="products.html">Legginsy</a></li>
+										<li><a href="products.html">Bielizna</a></li>
+										<li><a href="products.html">Skarpetki</a></li>
+									</ul>	
+								</div>							
+							</div>
+							
+						  </div>
+						</div>
+					</li>				
+				<li><a class="color6" href="contact.html">Kontakt</a></li>
+			  </ul> 
+			</div>
+				
+				<div class="clearfix"> </div>
+		</div>
+		</div>
+
+	</div>
+
+	
+<div class=" container">
+<div class=" register">
+	<h1>Rejestracja</h1>
+				 <div class="col-md-10 account-top">
+				 	<center><form action="db/register.php" method="POST"> 
+					<h3>Dane użytkownika</h3>
+					<br>
+					 <div>
+						<span>Nażwa uzytkownika</span>
+						<input type="text" name="login" data-validation="length alphanumeric" data-validation-length="min4" data-validation="required"> 
+					 </div>
+					 <div class="register-bottom-grid">
+						<span>Hasło</span>
+						<input type="password" name="password" data-validation="strength" data-validation-strength="2" data-validation="required" data-validation-length="min6"><br>
+					 </div>
+					 <div class="register-bottom-grid">
+						<span>Powtórz hasło</span>
+						<input type="password" name="repeat" data-validation="confirmation" data-validation-confirm="password" data-validation="required" ><br>
+					 </div>
+					 <div>
+						<span>Imię</span>
+						<input type="text" name="fname" data-validation="length custom" data-validation-length="min4" data-validation-regexp="^([a-z]+)$" data-validation="required">
+						</div>
+					  <div>
+						 <span>Nazwisko</span>
+						 <input type="text" name="lname" data-validation="length custom" data-validation-length="min2" data-validation-regexp="^([a-z]+)$" data-validation="required">
+					 </div>
+					 <div>
+						 <span>Email</span>
+						 <input type="text" name="email" data-validation="email" data-validation="required">
+						 </div>
+					  <div>
+								<span>Telefon</span>
+								<input type="text" name="phone" data-validation="length custom"  data-validation-regexp="\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{3})" data-validation-length="min9"data-validation="required">
+							 </div>
+							 <input type="submit" value="Zarejestruj">
+					 </div>
+					  </div>
+				</form>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+<script>
+  $.validate({
+    lang: 'pl',
+	 modules : 'security',
+  onModulesLoaded : function() {
+    var optionalConfig = {
+      fontSize: '12pt',
+      padding: '4px',
+      bad : 'Bardzo słabe hasło',
+      weak : ' Słabe hasło',
+      good : 'Średnie hasło',
+      strong : 'Bardzo silne hasło'
+    };
+
+    $('input[name="password"]').displayPasswordStrength(optionalConfig);
+  }
+  });
+</script>
+				</center>
+				
+				<div class="clearfix"> </div><br><br>
+			</div>
+</div>
+
+<div class="footer">
+				<div class="container">
+			<center><div class="footer-top-at">
+			
+				<div class="col-md-44 amet-sed">
+				<h4>Więcej informacji</h4>
+				<ul class="nav-bottom">
+						<li><a href="#">Jak zamówić</a></li>
+						<li><a href="#">FAQ</a></li>
+						<li><a href="contact.html">Lokalizacja</a></li>
+						<li><a href="#">Dostawa</a></li>
+						<li><a href="#">Uczestnictwo</a></li>	
+					</ul>	
+				</div>
+				<div class="col-md-44 amet-sed ">
+				<h4>Kontakt</h4>
+				
+					<p>Biuro:  +12 34 995 0792</p>
+					<ul class="social">
+						<li><a href="#"><i> </i></a></li>						
+						<li><a href="#"><i class="twitter"> </i></a></li>
+						<li><a href="#"><i class="rss"> </i></a></li>
+						<li><a href="#"><i class="gmail"> </i></a></li>
+						
+					</ul>
+				</div>
+
+				<div class="clearfix"> </div>
+			</div></center>
+		</div>
+		<div class="footer-class">
+		<p >© 2016 Nerwus store All Rights Reserved </p>
+		</div>
+		</div>
+</body>
+</html>
+			
