@@ -1,7 +1,13 @@
-<!DOCTYPE html>
+<?php
+include ('config.php');
+$username=$_SESSION["login"];
+$imie=$_SESSION["imie"];
+$reje=$_SESSION["signup"];
+$avatar=$_SESSION["avatar"];
+?>
 <html>
 <head>
-<title>Nerw.us - portal aukcyjny | Rejestracja</title>
+<title>Nerw.us - portal aukcyjny | Kontakt</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <script src="js/jquery.min.js"></script>
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
@@ -9,29 +15,50 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'><!--//fonts-->
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
 <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript" src="js/memenu.js"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>
+<script src="js/main.js"></script>
 </head>
 <body>
 <div class="header">
 	<div class="header-top">
 		<div class="container">
 
-			<div class="header-left">
-					<ul>
-						<li ><a class="lock"  href="login.html"  >Logowanie</a></li>
-						<li><a class="lock" href="register.html"  >Rejestracja</a></li>
-						<li>
-</li>
 
-					</ul>
+<?php if(isset($_SESSION['login'])){
+	$imie=$_SESSION["imie"];
+	$nazwisko=$_SESSION["nazwisko"];
+
+print <<<KOD
+<div class="header-a">
+<ul><li>
+<p>Witaj <b>$imie $nazwisko</b></p>
+</ul></li></div>
+<div class="header-left">
+<ul><li><a class="lock" href="logout.php">Wyloguj</a></li>
+</ul></div>
+KOD;
+}else{
+print <<<KOD
+<div class="header-left">
+<ul>
+<li ><a class="lock"  href="login.html"  >Logowanie</a></li>
+<li><a class="lock" href="register.html"  >Rejestracja</a></li>
+<li>
+</li>
+</ul>
+</div>
+KOD;
+}
+?>
+
 					<div class="clearfix"> </div>
 			</div>
 				<div class="clearfix"> </div>
 		</div>
-		</div>
+
 		<div class="container">
 			<div class="head-top">
 				<div class="logo">
@@ -39,7 +66,7 @@
 				</div>
 <div class=" h_menu4">
 					<ul class="memenu skyblue">
-					  <li class="active grid"><a class="color8" href="index.php">Strona główna</a></li>
+					  <li class="active grid"><a class="color1" href="index.php">Strona główna</a></li>
 				      <li><a class="color1" href="#">Kategorie</a>
 				      	<div class="mepanel">
 						<div class="row">
@@ -50,7 +77,7 @@
 										<li><a href="products.html">Zegarki</a></li>
 										<li><a href="products.html">Galanteria</a></li>
 										<li><a href="products.html">Swetry</a></li>
-										<li><a href="products.html">Kardigany s</a></li>
+										<li><a href="products.html">Kardigany </a></li>
 										<li><a href="products.html">Jeansy</a></li>
 										<li><a href="products.html">Nakrycia głowy</a></li>
 										<li><a href="products.html">Kurtki i płaszcze</a></li>
@@ -66,7 +93,7 @@
 										<li><a href="products.html">Koszule</a></li>
 										<li><a href="products.html">Buty</a></li>
 										<li><a href="products.html">Spodenki</a></li>
-										<li><a href="products.html">Garniyury</a></li>
+										<li><a href="products.html">Garnitury</a></li>
 										<li><a href="products.html">Okulary</a></li>
 										<li><a href="products.html">Dresy</a></li>
 										<li><a href="products.html">Stroje kąpielowe</a></li>
@@ -81,7 +108,7 @@
 						  </div>
 						</div>
 					</li>
-				<li><a class="color6" href="contact.html">Kontakt</a></li>
+				<li><a class="color1" href="contact.php">Kontakt</a></li>
 			  </ul>
 			</div>
 
@@ -91,72 +118,59 @@
 
 	</div>
 
+<div class="contact">
 
-<div class=" container">
-<div class=" register">
-	<h1>Rejestracja</h1>
-				 <div class="col-md-10 account-top">
-				 	<center><form action="register.php" method="POST"> 
-					<h3>Dane użytkownika</h3>
-					<br>
-					 <div>
-						<span>Nażwa uzytkownika</span>
-						<input type="text" name="login" data-validation="length alphanumeric" data-validation-length="min4" data-validation="required">
-					 </div>
-					 <div class="register-bottom-grid">
-						<span>Hasło</span>
-						<input type="password" name="password" data-validation="strength" data-validation-strength="2" data-validation="required" data-validation-length="min6"><br>
-					 </div>
-					 <div class="register-bottom-grid">
-						<span>Powtórz hasło</span>
-						<input type="password" name="repeat" data-validation="confirmation" data-validation-confirm="password" data-validation="required" ><br>
-					 </div>
-					 <div>
-						<span>Imię</span>
-						<input type="text" name="fname" data-validation="length custom" data-validation-length="min4" data-validation-regexp="^([a-z]+)$" data-validation="required">
-						</div>
-					  <div>
+			<div class="container">
+				<h1>Profil użytkownika <?php echo $username;?></h1><br><br>
+				<div class="cd-tabs">
+			<center><nav>
+				<ul class="cd-tabs-navigation">
+					<li><a data-content="informacje"  href="#0"  class="selected ">Informacje</a></li>
+					<li><a data-content="history" href="#0" >Historia licytowania</a></li>
+					<li><a data-content="lic" href="#0">Twoje licytacje (1)</a></li>
+					<li><a data-content="edycja" href="#0">Edytuj profil</a></li>
+				</ul></center>
+			</nav>
+	<ul class="cd-tabs-content">
+		<li data-content="informacje" class="selected">
+		<div class="facts">
+			<div class="contact-form">
+			<center><?php echo '<img src="'.$avatar.'" style="max-width:200px;max-height:400px;" />' ?><br>
+			<b>Imię:</b> <?php echo $imie;?><br>
+			<b>Data rejestracji:</b> <?php echo date('Y/m/d',$reje);?><br>
+			<b>Liczba wystawionych aukcji:</b> <?php echo "do zrobienia";?><br></center>
+		</div>
 
-						 <span>Nazwisko</span>
-						 <input type="text" name="lname" data-validation="length custom" data-validation-length="min2" data-validation-regexp="^([a-z]+)$" data-validation="required">
-					 </div>
-					 <div>
-						 <span>Email</span>
-						 <input type="text" name="email" data-validation="email" data-validation="required">
-						 </div>
-					  <div>
-								<span>Telefon</span>
-								<input type="text" name="phone" data-validation="length custom"  data-validation-regexp="\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{3})" data-validation-length="min9"data-validation="required">
-							 </div>
-							 <input type="submit" value="Zarejestruj">
-					 </div>
-					  </div>
-				</form>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
-<script>
-  $.validate({
-    lang: 'pl',
-	 modules : 'security',
-  onModulesLoaded : function() {
-    var optionalConfig = {
-      fontSize: '12pt',
-      padding: '4px',
-      bad : 'Bardzo słabe hasło',
-      weak : ' Słabe hasło',
-      good : 'Średnie hasło',
-      strong : 'Bardzo silne hasło'
-    };
+</li>
+<li data-content="history" >
+		<div class="facts1">
+<br><br>					
+<center><b>Do zrobienia</b></center>
+					        
+		</div>
 
-    $('input[name="password"]').displayPasswordStrength(optionalConfig);
-  }
-  });
-</script>
-				</center>
-
-				<div class="clearfix"> </div><br><br>
-			</div>
+</li>
+<li data-content="lic">
+			<div class="facts1">
+<br><br>						
+<center><b>Do zrobienia</b></center>
+					        
+		</div>
+</li>
+<li data-content="edycja">
+			<div class="facts1">
+<br><br>						
+<center><b>Do zrobienia</b></center>
+					        
+		</div>
+</li>
+<div class="clearfix"></div>
+	</ul> 
+</div> 
 </div>
-
+</div>
+</div>
+			
 <div class="footer">
 				<div class="container">
 			<center><div class="footer-top-at">

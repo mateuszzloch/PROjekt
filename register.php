@@ -14,7 +14,7 @@ $sql="SELECT * FROM users WHERE username = :username";
 $usr=$db->select($sql, $array);
 $x=count($usr);
 $array=array("email"=>$email);
-$sql="SELECT * FROM users WHERE username = :username";
+$sql="SELECT * FROM users WHERE email = :email";
 $usr=$db->select($sql, $array);
 $y=count($usr);
 if($x==0 && $y==0){
@@ -31,7 +31,7 @@ $array = array(
   "act_ive" => md5($signup_date)
 );
 $db->insert('users', $array);
-
+mkdir("images/users/".$username, 0777);
 $link="Dziękujemy za rejestrację w serwisie Nerw.us. Aby aktywować swoje konto kliknij w poniższy link:<br><br> http://matiurwis.itcave.pl/confirm.php?key=".md5($signup_date);
 $link .="<br><br>Twój login to: <b>$username</b><br>Twoje hasło to: <b>$password</b><br><br>Dziękujemy za rejestracje.";
 $fullMessage = "<html><body>".$link;

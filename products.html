@@ -1,4 +1,4 @@
-<!--A Design by W3layouts 
+<!--A Design by W3layouts
 Author: W3layout
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
@@ -13,11 +13,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script src="js/jquery.min.js"></script>
 <!-- Custom Theme files -->
 <!--theme-style-->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <!--//theme-style-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="New Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+<meta name="keywords" content="New Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!--fonts-->
@@ -27,7 +27,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript" src="js/memenu.js"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>
-<script src="js/simpleCart.min.js"> </script>
+<script>
+function category(cat){
+	$.ajax({
+		type: "POST",
+		url: "db/displayproducts.php",
+  	data: 'id='+cat,
+	 success: function(data){
+		 $('#list').html(data);}});
+}
+</script>
+
+
 </head>
 <body>
 <!--header-->
@@ -40,7 +51,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<input type="submit" value="Go">
 					</form>
 			</div>
-			<div class="header-left">		
+			<div class="header-left">
 					<ul>
 						<li ><a class="lock"  href="login.html"  >Login</a></li>
 						<li><a class="lock" href="games.html"  >Checkout</a></li>
@@ -65,11 +76,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="head-top">
 				<div class="logo">
-					<a href="index.html"><img src="images/logo.png" alt=""></a>	
+					<a href="index.html"><img src="images/logo.png" alt=""></a>
 				</div>
 		  <div class=" h_menu4">
 				<ul class="memenu skyblue">
-					  <li class="active grid"><a class="color8" href="index.html">Home</a></li>	
+					  <li class="active grid"><a class="color8" href="index.html">Home</a></li>
 				      <li><a class="color1" href="#">Shop</a>
 				      	<div class="mepanel">
 						<div class="row">
@@ -87,8 +98,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<li><a href="products.html">Leather Jackets</a></li>
 										<li><a href="products.html">Long Sleeve T-Shirts</a></li>
 										<li><a href="products.html">Loungewear</a></li>
-									</ul>	
-								</div>							
+									</ul>
+								</div>
 							</div>
 							<div class="col1">
 								<div class="h_nav">
@@ -104,8 +115,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<li><a href="products.html">T-Shirts</a></li>
 										<li><a href="products.html">Underwear & Socks</a></li>
 										<li><a href="products.html">Vests</a></li>
-									</ul>	
-								</div>							
+									</ul>
+								</div>
 							</div>
 							<div class="col1">
 								<div class="h_nav">
@@ -120,8 +131,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<li><a href="products.html">Paul Smith</a></li>
 										<li><a href="products.html">Ray-Ban</a></li>
 										<li><a href="products.html">Wood Wood</a></li>
-									</ul>	
-								</div>												
+									</ul>
+								</div>
 							</div>
 						  </div>
 						</div>
@@ -143,8 +154,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<li><a href="products.html">Leather Jackets</a></li>
 										<li><a href="products.html">Long Sleeve T-Shirts</a></li>
 										<li><a href="products.html">Loungewear</a></li>
-									</ul>	
-								</div>							
+									</ul>
+								</div>
 							</div>
 							<div class="col1">
 								<div class="h_nav">
@@ -160,8 +171,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<li><a href="products.html">T-Shirts</a></li>
 										<li><a href="products.html">Underwear & Socks</a></li>
 										<li><a href="products.html">Vests</a></li>
-									</ul>	
-								</div>							
+									</ul>
+								</div>
 							</div>
 							<div class="col1">
 								<div class="h_nav">
@@ -176,36 +187,36 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<li><a href="products.html">Paul Smith</a></li>
 										<li><a href="products.html">Ray-Ban</a></li>
 										<li><a href="products.html">Wood Wood</a></li>
-									</ul>	
-								</div>												
+									</ul>
+								</div>
 							</div>
 						  </div>
 						</div>
 			    </li>
-				<li><a class="color4" href="blog.html">Blog</a></li>				
+				<li><a class="color4" href="blog.html">Blog</a></li>
 				<li><a class="color6" href="contact.html">Conact</a></li>
-			  </ul> 
+			  </ul>
 			</div>
-				
+
 				<div class="clearfix"> </div>
 		</div>
 		</div>
 
 	</div>
 
-	
+
 <!--content-->
 <!---->
 		<div class="product">
 			<div class="container">
 				<div class="col-md-3 product-price">
-					  
+
 				<div class=" rsidebar span_1_of_left">
 					<div class="of-left">
 						<h3 class="cate">Categories</h3>
 					</div>
 		 <ul class="menu">
-		<li class="item1"><a href="#">Men </a>
+		<li class="item1"><a onclick="category(1)">Men</a>
 			<ul class="cute">
 				<li class="subitem1"><a href="single.html">Cute Kittens </a></li>
 				<li class="subitem2"><a href="single.html">Strange Stuff </a></li>
@@ -233,7 +244,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<li class="subitem3"><a href="single.html">Automatic Fails</a></li>
 			</ul>
 		</li>
-				
+
 		<li class="item4"><a href="#">Shoes</a>
 			<ul class="cute">
 				<li class="subitem1"><a href="product.html">Cute Kittens </a></li>
@@ -260,77 +271,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			            $(this).next().stop(true,true).slideUp('normal');
 			        }
 			    });
-			
+
 			});
 		</script>
 <!---->
 	<div class="product-middle">
-		
+
 					<div class="fit-top">
 						<h6 class="shop-top">Lorem Ipsum</h6>
 						<a href="single.html" class="shop-now">SHOP NOW</a>
 <div class="clearfix"> </div>
 	</div>
-				</div>	 
+				</div>
 						<div class="sellers">
-							<div class="of-left-in">
-								<h3 class="tag">Tags</h3>
-							</div>
-								<div class="tags">
-									<ul>
-										<li><a href="#">design</a></li>
-										<li><a href="#">fashion</a></li>
-										<li><a href="#">lorem</a></li>
-										<li><a href="#">dress</a></li>
-										<li><a href="#">fashion</a></li>
-										<li><a href="#">dress</a></li>
-										<li><a href="#">design</a></li>
-										<li><a href="#">dress</a></li>
-										<li><a href="#">design</a></li>
-										<li><a href="#">fashion</a></li>
-										<li><a href="#">lorem</a></li>
-										<li><a href="#">dress</a></li>
-										
-										<div class="clearfix"> </div>
-									</ul>
-								
-								</div>
-								
+
+
+
 		</div>
 				<!---->
 				<div class="product-bottom">
-					<div class="of-left-in">
-								<h3 class="best">Best Sellers</h3>
-							</div>
-					<div class="product-go">
-						<div class=" fashion-grid">
-									<a href="single.html"><img class="img-responsive " src="images/p1.jpg" alt=""></a>
-									
-								</div>
-							<div class=" fashion-grid1">
-								<h6 class="best2"><a href="single.html" >Lorem ipsum dolor sit
-amet consectetuer  </a></h6>
-								
-								<span class=" price-in1"> $40.00</span>
-							</div>
-								
+
 							<div class="clearfix"> </div>
-							</div>
-							<div class="product-go">
-						<div class=" fashion-grid">
-									<a href="single.html"><img class="img-responsive " src="images/p2.jpg" alt=""></a>
-									
-								</div>
-							<div class="fashion-grid1">
-								<h6 class="best2"><a href="single.html" >Lorem ipsum dolor sit
-amet consectetuer </a></h6>
-								
-								<span class=" price-in1"> $40.00</span>
-							</div>
-								
-							<div class="clearfix"> </div>
-							</div>
-					
+
+
 				</div>
 <div class=" per1">
 				<a href="single.html" ><img class="img-responsive" src="images/pro.jpg" alt="">
@@ -341,7 +304,7 @@ amet consectetuer </a></h6>
 				</div></a>
 			</div>
 				</div>
-				<div class="col-md-9 product1">
+				<div class="col-md-9 product1" id="list">
 				<div class=" bottom-product">
 					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
 						<div class="product-at ">
@@ -349,28 +312,19 @@ amet consectetuer </a></h6>
 							<div class="pro-grid">
 										<span class="buy-in">Buy Now</span>
 							</div>
-						</a>	
+						</a>
 						</div>
 						<p class="tun">It is a long established fact that a reader</p>
-						<a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>						
+						<a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>
 					</div>
-					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
-						<div class="product-at ">
-							<a href="single.html"><img class="img-responsive" src="images/pi1.jpg" alt="">
-							<div class="pro-grid">
-										<span class="buy-in">Buy Now</span>
-							</div>
-						</a>	
-						</div>
-						<p class="tun">It is a long established fact that a reader</p>
-<a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>					</div>
+
 					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
 						<div class="product-at ">
 							<a href="single.html"><img class="img-responsive" src="images/pi4.jpg" alt="">
 							<div class="pro-grid">
 										<span class="buy-in">Buy Now</span>
 							</div>
-						</a>	
+						</a>
 						</div>
 						<p class="tun">It is a long established fact that a reader</p>
 <a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>					</div>
@@ -383,7 +337,7 @@ amet consectetuer </a></h6>
 							<div class="pro-grid">
 										<span class="buy-in">Buy Now</span>
 							</div>
-						</a>	
+						</a>
 						</div>
 						<p class="tun">It is a long established fact that a reader</p>
 <a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>					</div>
@@ -393,10 +347,10 @@ amet consectetuer </a></h6>
 							<div class="pro-grid">
 										<span class="buy-in">Buy Now</span>
 							</div>
-						</a>	
+						</a>
 						</div>
 						<p class="tun">It is a long established fact that a reader</p>
-<a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>					
+<a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>
 </div>
 					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
 						<div class="product-at ">
@@ -404,7 +358,7 @@ amet consectetuer </a></h6>
 							<div class="pro-grid">
 										<span class="buy-in">Buy Now</span>
 							</div>
-						</a>	
+						</a>
 						</div>
 						<p class="tun">It is a long established fact that a reader</p>
 <a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>					</div>
@@ -417,10 +371,10 @@ amet consectetuer </a></h6>
 							<div class="pro-grid">
 										<span class="buy-in">Buy Now</span>
 							</div>
-						</a>	
+						</a>
 						</div>
 						<p class="tun">It is a long established fact that a reader</p>
-					<a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>					
+					<a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>
 
 					</div>
 					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
@@ -429,10 +383,10 @@ amet consectetuer </a></h6>
 							<div class="pro-grid">
 										<span class="buy-in">Buy Now</span>
 							</div>
-						</a>	
+						</a>
 						</div>
 						<p class="tun">It is a long established fact that a reader</p>
-<a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>					
+<a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>
 </div>
 					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
 						<div class="product-at ">
@@ -440,14 +394,14 @@ amet consectetuer </a></h6>
 							<div class="pro-grid">
 										<span class="buy-in">Buy Now</span>
 							</div>
-						</a>	
+						</a>
 						</div>
 						<p class="tun">It is a long established fact that a reader</p>
-<a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>					
+<a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>
 </div>
 					<div class="clearfix"> </div>
 				</div>
-				
+
 				</div>
 		<div class="clearfix"> </div>
 		<nav class="in">
@@ -462,16 +416,16 @@ amet consectetuer </a></h6>
 				  </ul>
 				</nav>
 		</div>
-		
+
 		</div>
-			
+
 				<!---->
 
 <!--//content-->
 <div class="footer">
 				<div class="container">
 			<div class="footer-top-at">
-			
+
 				<div class="col-md-4 amet-sed">
 				<h4>MORE INFO</h4>
 				<ul class="nav-bottom">
@@ -479,22 +433,22 @@ amet consectetuer </a></h6>
 						<li><a href="#">FAQ</a></li>
 						<li><a href="contact.html">Location</a></li>
 						<li><a href="#">Shipping</a></li>
-						<li><a href="#">Membership</a></li>	
-					</ul>	
+						<li><a href="#">Membership</a></li>
+					</ul>
 				</div>
 				<div class="col-md-4 amet-sed ">
 				<h4>CONTACT US</h4>
-				
+
 					<p>
 Contrary to popular belief</p>
 					<p>The standard chunk</p>
 					<p>office:  +12 34 995 0792</p>
 					<ul class="social">
-						<li><a href="#"><i> </i></a></li>						
+						<li><a href="#"><i> </i></a></li>
 						<li><a href="#"><i class="twitter"> </i></a></li>
 						<li><a href="#"><i class="rss"> </i></a></li>
 						<li><a href="#"><i class="gmail"> </i></a></li>
-						
+
 					</ul>
 				</div>
 				<div class="col-md-4 amet-sed">
@@ -515,4 +469,3 @@ and promo</p>
 		</div>
 </body>
 </html>
-			

@@ -1,1 +1,4 @@
 db/config.php
+.remote-sync.json
+.htaccess
+images/users/*
