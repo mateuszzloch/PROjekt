@@ -1,32 +1,50 @@
 <?php
 include ('config.php');
-$username=$_SESSION["login"];
-$uid=$_SESSION['uid'];
 ?>
+<!DOCTYPE html>
 <html>
 <head>
-<title>Nerw.us - portal aukcyjny | Dodawanie aukcji</title>
+<title>Nerw.us - portal aukcyjny | Produkty</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
+<!-- Custom Theme files -->
+<!--theme-style-->
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!--//theme-style-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!--fonts-->
 <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'><!--//fonts-->
+<!-- start menu -->
 <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript" src="js/memenu.js"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>
+<script>
+function category(cat){
+	$.ajax({
+		type: "POST",
+		url: "db/displayproducts.php",
+  	data: 'id='+cat,
+	 success: function(data){
+		 $('#list').html(data);}});
+}
+category(0);
+</script>
+
+
 </head>
 <body>
+<!--header-->
 <div class="header">
 	<div class="header-top">
 		<div class="container">
 
 
-			<?php if(isset($_SESSION['login'])){
-			$imie=$_SESSION["imie"];
-			$nazwisko=$_SESSION["nazwisko"];
+<?php if(isset($_SESSION['login'])){
+	$imie=$_SESSION["imie"];
+	$nazwisko=$_SESSION["nazwisko"];
 
 print <<<KOD
 <div class="header-a">
@@ -35,6 +53,7 @@ print <<<KOD
 </ul></li></div>
 <div class="header-left">
 <ul>
+<li><a class="lock" href="addproduct.php">Wystaw przedmiot</a></li>
 <li><a class="lock" href="logout.php">Wyloguj</a></li>
 </ul></div>
 KOD;
@@ -103,56 +122,62 @@ KOD;
 	</div>
 
 
-
+<!--content-->
+<!---->
+		<div class="product">
 			<div class="container">
-				<br>
-			<div class="account">
-		<center><h1>Dodawanie aukcji</h1></center>
-		<br><br>
-	<div style="font-size: 1em;" class="col-md-10 account-top">
-<form action="addp.php" method="post" enctype="multipart/form-data">
-<span>Nazwa:</span>
-<input width="300px" name="nazwa" type="text"/><br><br>
-<span>Kategoria:</span> <select name='kat'><br>
-<?php
-$sql="SELECT * FROM cat";
-$cats=$db->selecto($sql);
-foreach ($cats as $key => $value)
-{
-	$idc=$value['id_kat'];
-	$namec=$value['name'];
-print <<<KOD
-<option value="$idc"> $namec </option>
-KOD;
-}
-?>
-</select>
-<br><br>
-<span>Cena minimalna:</span> <input type="text" name="cena" />
-<br><br>
-<span>Długość aukcji:</span> <input type="number" step="1" name="dlugosc"/>dni
-<br><br>
-<span>Opis produktu:<span><br>
-<textarea rows="4" cols="50" name="opis"></textarea><br>
-<span>Dodaj zdjęcia:</span>
+				<div class="col-md-3 product-price">
 
+				<div class=" rsidebar span_1_of_left">
+					<div class="of-left">
+						<h3 class="cate">Kategorie</h3>
+					</div>
+		 <ul class="menu">
+		<li class="item1"><a onclick="category(0)">Elektronika</a>
+		</li>
+		<li class="item2"><a onclick="category(1)">Moda</a>
+		</li>
+		<li class="item3"><a onclick="category(2)">Dom</a>
+		</li>
+		<li class="item4"><a onclick="category(3)">Dziecko</a>
+		</li>
+		<li class="item4"><a onclick="category(4)">Kultura</a>
+		</li>
+	</li>
+		<li class="item4"><a onclick="category(5)">Sport</a>
+		</li>
+	</li>
+		<li class="item4"><a onclick="category(6)">Motoryzacja</a>
+		</li>
+	</li>
+		<li class="item4"><a onclick="category(7)">Kolekcje</a>
+		</li>
+	</ul>
+					</div>
+							<div class="clearfix"> </div>
+				</div>
+				<div class="col-md-9 product1" id="list">
 
-<br><input type="file" name="obr1" id="obr1"/>
+				</div>
+		<div class="clearfix"> </div>
+		<nav class="in">
+				  <ul class="pagination">
+					<li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+					<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+					<li><a href="#">2 <span class="sr-only"></span></a></li>
+					<li><a href="#">3 <span class="sr-only"></span></a></li>
+					<li><a href="#">4 <span class="sr-only"></span></a></li>
+					<li><a href="#">5 <span class="sr-only"></span></a></li>
+					 <li> <a href="#" aria-label="Next"><span aria-hidden="true">»</span> </a> </li>
+				  </ul>
+				</nav>
+		</div>
 
-<br><input type="file" name="obr2" id="obr2"/>
+		</div>
 
-<br><input type="file" name="obr3" id="obr3"/>
+				<!---->
 
-<br><input type="file" name="obr4" id="obr4"/>
-
-<br><input type="file" name="obr5" id="obr5"/>
-
-<br><input type="file" name="obr6" id="obr6"/>
-<input type="submit" value="Dodaj aukcję"/>
-</form>
-</div>
-</div>
-</div>
+<!--//content-->
 <div class="footer">
 				<div class="container">
 			<center><div class="footer-top-at">
@@ -184,7 +209,7 @@ KOD;
 			</div></center>
 		</div>
 		<div class="footer-class">
-		<p >© 2016 Nerwus store All Rights Reserved </p>
+		<p > Made with ❤❤ by Nerw.us </p>
 		</div>
 		</div>
 </body>

@@ -16,18 +16,16 @@ include ('config.php');
 <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript" src="js/memenu.js"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>
-
-
 </head>
 <body>
 <div class="header">
 	<div class="header-top">
 		<div class="container">
 
-	
+
 <?php if(isset($_SESSION['login'])){
-	$imie=$_SESSION["imie"];
-	$nazwisko=$_SESSION["nazwisko"];
+$imie=$_SESSION["imie"];
+$nazwisko=$_SESSION["nazwisko"];
 
 print <<<KOD
 <div class="header-a">
@@ -35,7 +33,9 @@ print <<<KOD
 <p>Witaj <a href="profil.php"><b>$imie $nazwisko</b></a></p>
 </ul></li></div>
 <div class="header-left">
-<ul><li><a class="lock" href="logout.php">Wyloguj</a></li>
+<ul>
+<li><a class="lock" href="addproduct.php">Wystaw przedmiot</a></li>
+<li><a class="lock" href="logout.php">Wyloguj</a></li>
 </ul></div>
 KOD;
 }else{
@@ -56,7 +56,7 @@ KOD;
 			</div>
 				<div class="clearfix"> </div>
 		</div>
-	
+
 		<div class="container">
 			<div class="head-top">
 				<div class="logo">
@@ -318,7 +318,7 @@ KOD;
 			</div></center>
 		</div>
 		<div class="footer-class">
-		<p >© 2016 Nerwus store All Rights Reserved </p>
+<p > Made with ❤❤ by Nerw.us </p>
 		</div>
 		</div>
 </body>
