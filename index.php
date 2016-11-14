@@ -16,6 +16,18 @@ include ('config.php');
 <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript" src="js/memenu.js"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>
+<script>
+function funcat(cat){
+	$.ajax({
+		type: "POST",
+		url: "db/swtopro.php",
+  	data: 'id='+cat,
+		success: function(){
+			window.location='products.php';
+		}
+	});
+}
+</script>
 </head>
 <body>
 <div class="header">
@@ -71,20 +83,20 @@ KOD;
 							<div class="col1">
 								<div class="h_nav">
 									<ul>
-										<li><a href="products.html">Elektronika</a></li>
-										<li><a href="products.html">Moda</a></li>
-										<li><a href="products.html">Dom</a></li>
-										<li><a href="products.html">Dziecko</a></li>
+										<li><a href="#" onclick="funcat(0)">Elektronika</a></li>
+										<li><a  href="#" onclick="funcat(1)">Moda</a></li>
+										<li><a  href="#" onclick="funcat(2)">Dom</a></li>
+										<li><a  href="#" onclick="funcat(3)">Dziecko</a></li>
 									</ul>
 								</div>
 							</div>
 							<div class="col1">
 								<div class="h_nav">
 									<ul>
-										<li><a href="products.html">Kultura</a></li>
-										<li><a href="products.html">Sport</a></li>
-										<li><a href="products.html">Motoryzacja</a></li>
-										<li><a href="products.html">Kolekcje</a></li>
+										<li><a  href="#" onclick="funcat(4)">Kultura</a></li>
+										<li><a  href="#" onclick="funcat(5)">Sport</a></li>
+										<li><a href="#" onclick="funcat(6)">Motoryzacja</a></li>
+										<li><a href="#" onclick="funcat(7)">Kolekcje</a></li>
 									</ul>
 								</div>
 							</div>

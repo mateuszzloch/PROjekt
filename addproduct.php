@@ -133,7 +133,7 @@ KOD;
 <span>Długość aukcji:</span> <input type="number" step="1" name="dlugosc"/>dni
 <br><br>
 <span>Opis produktu:<span><br>
-<textarea rows="4" cols="50" name="opis"></textarea><br>
+<textarea rows="25" cols="75" name="opis"></textarea><br>
 <span>Dodaj zdjęcia:</span>
 
 
