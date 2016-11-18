@@ -21,8 +21,11 @@ include ('config.php');
 <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript" src="js/memenu.js"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>
+<script src="js/jquery.twbsPagination.js"></script>
 <script>
+var page;
 function funcat(cat){
+	cato = cat;
 	$.ajax({
 		type: "POST",
 		url: "db/swtopro.php",
@@ -32,34 +35,43 @@ function funcat(cat){
 		}
 	});
 }
-</script>
-<script>
-function category(cat){
+
+
+
+function category(cat, limit){
+	cato = cat;
 	$.ajax({
 		type: "POST",
 		url: "db/displayproducts.php",
-  	data: 'id='+cat,
+  	data: 'id='+cat+'&limit='+limit,
+		async: false,
 	 success: function(data){
-		 $('#list').html(data);}});
+		 $('#list').html(data);
+		 x = document.getElementsByName("pgs")[0].value;
+	 }
+ });
+
 }
-</script>
-<?php
-if (isset($_SESSION['catwoman'])){
-	$id=$_SESSION['catwoman'];
-print <<<KOD
-<script>
-category($id);
-</script>
-KOD;
-	unset($_SESSION['catwoman']);
-}else {
-print <<<KOD
-<script>
-category(0);
-</script>
-KOD;
+
+
+function backintime(){
+	$('#pagination').twbsPagination('destroy');
+	window.pagObj = $('#pagination').twbsPagination({
+			totalPages: x,
+			visiblePages: 5,
+			first: 'Pierwsza',
+			prev: 'Poprzednia',
+			next: 'Następna',
+			last: 'Ostatnia',
+			onPageClick: function (event, page) {
+				$('html, body').animate({ scrollTop: 0 }, 'fast');
+				category(cato, page);
+			}
+		});
 }
-?>
+
+</script>
+
 
 </head>
 <body>
@@ -160,24 +172,24 @@ KOD;
 						<h3 class="cate">Kategorie</h3>
 					</div>
 		 <ul class="menu">
-		<li class="item1"><a href="#" onclick="category(0)">Elektronika</a>
+		<li class="item1"><a href="#" onclick="category(0,1); backintime();">Elektronika</a>
 		</li>
-		<li class="item2"><a href="#" onclick="category(1)">Moda</a>
+		<li class="item2"><a href="#" onclick="category(1,1); backintime();">Moda</a>
 		</li>
-		<li class="item3"><a href="#" onclick="category(2)">Dom</a>
+		<li class="item3"><a href="#" onclick="category(2,1); backintime();">Dom</a>
 		</li>
-		<li class="item4"><a href="#" onclick="category(3)">Dziecko</a>
+		<li class="item4"><a href="#" onclick="category(3,1); backintime();">Dziecko</a>
 		</li>
-		<li class="item4"><a href="#" onclick="category(4)">Kultura</a>
-		</li>
-	</li>
-		<li class="item4"><a href="#" onclick="category(5)">Sport</a>
+		<li class="item4"><a href="#" onclick="category(4,1); backintime();">Kultura</a>
 		</li>
 	</li>
-		<li class="item4"><a href="#" onclick="category(6)">Motoryzacja</a>
+		<li class="item4"><a href="#" onclick="category(5,1); backintime();">Sport</a>
 		</li>
 	</li>
-		<li class="item4"><a href="#" onclick="category(7)">Kolekcje</a>
+		<li class="item4"><a href="#" onclick="category(6,1); backintime();">Motoryzacja</a>
+		</li>
+	</li>
+		<li class="item4"><a href="#" onclick="category(7,1); backintime();">Kolekcje</a>
 		</li>
 	</ul>
 					</div>
@@ -187,17 +199,10 @@ KOD;
 
 				</div>
 		<div class="clearfix"> </div>
+		<center>
 		<nav class="in">
-				  <ul class="pagination">
-					<li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-					<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-					<li><a href="#">2 <span class="sr-only"></span></a></li>
-					<li><a href="#">3 <span class="sr-only"></span></a></li>
-					<li><a href="#">4 <span class="sr-only"></span></a></li>
-					<li><a href="#">5 <span class="sr-only"></span></a></li>
-					 <li> <a href="#" aria-label="Next"><span aria-hidden="true">»</span> </a> </li>
-				  </ul>
-				</nav>
+				  <ul class="pagination" id="pagination"></ul>
+				</nav></center>
 		</div>
 
 		</div>
@@ -239,5 +244,25 @@ KOD;
 		<p > Made with ❤❤ by Nerw.us </p>
 		</div>
 		</div>
+<?php
+if (isset($_SESSION['catwoman'])){
+$id=$_SESSION['catwoman'];
+$limit=$_SESSION['limit'];
+print <<<KOD
+<script>
+category($id, $limit);
+backintime();
+</script>
+KOD;
+// unset($_SESSION['catwoman']);
+}else {
+print <<<KOD
+<script>
+category(0, 1);
+backintime();
+</script>
+KOD;
+}
+?>
 </body>
 </html>

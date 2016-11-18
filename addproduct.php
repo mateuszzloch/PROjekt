@@ -106,14 +106,14 @@ KOD;
 
 			<div class="container">
 				<br>
-			<div class="account">
+			<div class="form-group">
 		<center><h1>Dodawanie aukcji</h1></center>
 		<br><br>
 	<div style="font-size: 1em;" class="col-md-10 account-top">
 <form action="addp.php" method="post" enctype="multipart/form-data">
 <span>Nazwa:</span>
-<input width="300px" name="nazwa" type="text"/><br><br>
-<span>Kategoria:</span> <select name='kat'><br>
+<input class="form-control" width="300px" name="nazwa" type="text"/><br><br>
+<span>Kategoria:</span> <select class="form-control" style="width: 40%;" name='kat'><br>
 <?php
 $sql="SELECT * FROM cat";
 $cats=$db->selecto($sql);
@@ -128,16 +128,21 @@ KOD;
 ?>
 </select>
 <br><br>
-<span>Cena minimalna:</span> <input type="text" name="cena" />
+<span>Cena minimalna:</span> <input class="form-control" type="text" name="cena" />
 <br><br>
-<span>Długość aukcji:</span> <input type="number" step="1" name="dlugosc"/>dni
+<span>Długość aukcji:</span> <select class="form-control" style="width: 40%;" name="dlugosc">
+  <option value="7">7 dni</option>
+  <option value="14">14 dni</option>
+  <option value="21">21 dni</option>
+  <option value="31">31 dni</option>
+ </select>
 <br><br>
 <span>Opis produktu:<span><br>
-<textarea rows="25" cols="75" name="opis"></textarea><br>
+<textarea class="form-control" rows="25" cols="75" name="opis"></textarea><br>
 <span>Dodaj zdjęcia:</span>
 
 
-<br><input type="file" name="obr1" id="obr1"/>
+<br><input type="file" name="obr1" id="obr1" />
 
 <br><input type="file" name="obr2" id="obr2"/>
 

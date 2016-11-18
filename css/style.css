@@ -866,7 +866,7 @@ h3.cate {
   padding: 4em 0;
 }
 .bottom-product {
-  margin-bottom: 2em;
+  margin-bottom: 4em;
 }
 nav.in{
   text-align: center;
@@ -1071,6 +1071,7 @@ p.tun{
   text-align: center;
   line-height: 1.3em;
   padding: 1em 0;
+  height: 6em;
 }
 
 .product-at{
@@ -1089,7 +1090,7 @@ p.tun{
 	width:100%;
 	height:100%;
 	display:none;
-	padding: 8em 0 0;
+	padding: 5em 0 0;
 }
 .pro-grid span{
 	text-decoration:none;
@@ -1479,7 +1480,7 @@ a.add-re:hover{
 
 .account-top textarea{
 	resize:none;
-	height:200px;		
+	height:200px;
 }
 .account-top input[type="submit"]{
 	outline:none;
@@ -1488,7 +1489,7 @@ a.add-re:hover{
 	cursor:pointer;
 	background:#EF5F21;
 	border:none;
-	width:20%;
+	width:30%;
    margin:1em auto 0;
    transition: 0.5s all;
 	-webkit-transition: 0.5s all;

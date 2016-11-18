@@ -9,4 +9,6 @@ define('DB_PASS', 'Perseusz20^!');
 $db = new Database();
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
+
+if(isset($_SESSION['limit'])==false){$_SESSION['limit']=1;}
 ?>

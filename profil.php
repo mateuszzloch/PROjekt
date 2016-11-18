@@ -1,5 +1,6 @@
 <?php
 include ('config.php');
+$uid=$_SESSION['uid'];
 $username=$_SESSION["login"];
 $imie=$_SESSION["imie"];
 $reje=$_SESSION["signup"];
@@ -31,6 +32,13 @@ function funcat(cat){
 			window.location='products.php';
 		}
 	});
+}
+function showHist(id){
+	if (document.getElementById(id).style.display=="none"){
+		document.getElementById(id).style.display = 'block';
+	}else{
+		document.getElementById(id).style.display = 'none';
+	}
 }
 </script>
 </head>
@@ -122,6 +130,13 @@ KOD;
 
 <div class="contact">
 	<?php
+	$sql="SELECT * FROM products where id_user=:id_user AND p_enddate>:p_enddate";
+	$array = array(
+		"id_user"=>$uid,
+		"p_enddate"=> date("U"),
+	);
+	$p=$db->select($sql,$array);
+	$liczba=count($p);
 	print <<<KOD
 			<div class="container">
 				<h1>Profil użytkownika $username</h1><br><br>
@@ -130,7 +145,7 @@ KOD;
 				<ul class="cd-tabs-navigation">
 					<li><a data-content="informacje"  href="#0"  class="selected ">Informacje</a></li>
 					<li><a data-content="history" href="#0" >Historia licytowania</a></li>
-					<li><a data-content="lic" href="#0">Twoje licytacje (1)</a></li>
+					<li><a data-content="lic" href="#0">Twoje licytacje ($liczba)</a></li>
 					<li><a data-content="edycja" href="#0">Edytuj profil</a></li>
 				</ul></center>
 			</nav>
@@ -158,27 +173,51 @@ KOD;
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>do zrobienia</td>
-			<td>do zrobienia</td>
-      <td>Tak/Nie</td>
-      <td><a href="#">Przejdź</a></td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>do zrobienia</td>
-			<td>do zrobienia</td>
-      <td>Tak/Nie</td>
-      <td><a href="#">Przejdź</a></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>do zrobienia</td>
-			<td>do zrobienia</td>
-      <td>Tak/Nie</td>
-      <td><a href="#">Przejdź</a></td>
-    </tr>
+KOD;
+$sql="SELECT DISTINCT id_p FROM history WHERE id_user = :id_user";
+$array=array(
+	"id_user" => $_SESSION['uid'],
+);
+$hists=$db->select($sql,$array);
+$warum="";
+$qwe=count($hists)-1;
+foreach ($hists as $key => $value) {
+	if($key!=$qwe && $key!=0){
+		$warum=$warum.",".$value['id_p'];
+	}else if ($key==0){
+		$warum=$value['id_p'];
+	}else{
+		$warum=$warum.$value['id_p'];
+	}
+}
+// echo $warum;
+$sql="SELECT * FROM products WHERE id_p IN ($warum)";
+$kappa=$db->selecto($sql);
+// print_r($kappa);
+foreach ($kappa as $key => $value) {
+	$id=$value['id_p'];
+	$nr=$key+1;
+	$title=$value['p_title'];
+	$hprice=$value['p_hp'];
+	$now=strtotime("now");
+	$endoo=$value['p_enddate'];
+	if ($now<$endoo){
+		$over="Nie";
+	}else{
+		$over="Tak";
+	}
+print <<<KOD
+	<tr>
+		<th scope="row">$nr</th>
+		<td>$title</td>
+		<td>$hprice</td>
+		<td>$over</td>
+		<td><a href="http://matiurwis.itcave.pl/single.php?id=$id">Przejdź</a></td>
+	</tr>
+KOD;
+}
+
+print <<<KOD
   </tbody>
 </table>
 
@@ -197,25 +236,44 @@ KOD;
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>do zrobienia</td>
-      <td>do zrobienia</td>
-      <td><a href="#">Przejdź</a></td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>do zrobienia</td>
-      <td>do zrobienia</td>
-      <td><a href="#">Przejdź</a></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>do zrobienia</td>
-      <td>do zrobienia</td>
-      <td><a href="#">Przejdź</a></td>
-    </tr>
-  </tbody>
+KOD;
+foreach ($p as $key => $value) {
+	$id=$value['id_p'];
+	$nr=$key+1;
+	$title=$value['p_title'];
+	$price=$value['p_hp'];
+print <<<KOD
+<div>
+<tr>
+	<th scope="row">$nr</th>
+	<td>$title</td>
+	<td>$price</td>
+	<td><a href="http://matiurwis.itcave.pl/single.php?id=$id">Przejdź</a><br><a onclick="showHist($nr);">Historia</a></td>
+	<tr><td colspan=4><div id="$nr" style="display: none;">
+KOD;
+
+	$qwert="SELECT * FROM history WHERE id_p = :id_p";
+	$asdf= array("id_p"=>$id);
+	$tsih=$db->select($qwert, $asdf);
+
+foreach ($tsih as $key => $value) {
+	//too
+	$login = $value['login'];
+	$hajs = $value['p_price'];
+print <<<KOD
+	<p>$login podniósł cenę do $hajs</p> <br>
+KOD;
+}
+
+print <<<KOD
+	</div></td></tr>
+
+	</tr></div>
+KOD;
+	}
+print <<<KOD
+
+</tbody>
 </table>
 		</div>
 </li>
